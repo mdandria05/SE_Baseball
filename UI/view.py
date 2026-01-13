@@ -30,9 +30,8 @@ class View:
         self.txt_titolo = ft.Text(value="Gestione Squadre di Baseball", size=30, weight=ft.FontWeight.BOLD)
 
         # TODO
-
         # Riga 1
-        self.dd_anno = ft.Dropdown(label="Anno", width=200, alignment=ft.alignment.top_left)
+        self.dd_anno = ft.Dropdown(label="Anno", width=200, alignment=ft.alignment.top_left, options=self.controller.update_dd_anni(), on_change=self.controller.update_lista1)
 
         row1 = ft.Row([ft.Container(self.txt_titolo, width=500),
                                ft.Container(None, width=0),

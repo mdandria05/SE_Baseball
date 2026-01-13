@@ -21,3 +21,18 @@ class Controller:
 
     """ Altri possibili metodi per gestire di dd_anno """""
     # TODO
+    def update_dd_anni(self):
+        value = self._model.ricerca_anni()
+        lista = []
+        for a in range(value[0], value[1]+1):
+            lista.append(ft.DropdownOption(key=a,content=ft.Text(f"{a}")))
+        return lista
+    def update_lista1(self,e):
+        value = self._view.dd_anno.value
+        self._view.txt_out_squadre.clean()
+        teams = self._model.ricerca_team_anno(value)
+        self._view.txt_out_squadre.controls.append(ft.Text(f"Numero squadre: {len(teams)}"))
+        for team in teams.values():
+            self._view.txt_out_squadre.controls.append(ft.Text(f"{team.team_code} ({team.name})"))
+        self._view.update()
+
