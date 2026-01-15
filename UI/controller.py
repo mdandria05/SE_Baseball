@@ -29,6 +29,12 @@ class Controller:
     def handle_percorso(self, e):
         """ Handler per gestire il problema ricorsivo di ricerca del percorso """""
         # TODO
+        self._view.txt_risultato.controls.clear()
+        path,peso = self._model.get_info(self._view.dd_squadra.value)
+        for p in range(1,len(path)):
+            self._view.txt_risultato.controls.append(ft.Text(f"{path[p-1].team_code} ({path[p-1].name}) -> {path[p].team_code} ({path[p].name}) (peso {path[p].tot_salary + path[p-1].tot_salary})"))
+        self._view.txt_risultato.controls.append(ft.Text(f"Peso totale: {peso}"))
+        self._view.update()
 
     """ Altri possibili metodi per gestire di dd_anno """""
     # TODO
